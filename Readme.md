@@ -37,6 +37,8 @@ This report consists of a 3-page dashboard
 
 ### Revenue Details
 
+![Revenue Page](./images/img1.png)
+
 This page provides an overview of total revenue performance across sellers, customers, and product categories.
 
 **Key Metrics (KPI Cards):**
@@ -61,6 +63,8 @@ This page provides an overview of total revenue performance across sellers, cust
 **Data sources used:** order_payments, orders, order_items, sellers, customers, products tables (Silver layer cleaned data)
 
 ### Customers Satisfaction
+
+![Customers Page](./images/img2.png)
 
 This page analyzes customer experience metrics including review scores, 
 delivery performance, and payment behavior.
@@ -99,6 +103,8 @@ tables (Silver layer cleaned data)
 
 ### Product Trends
 
+![Product Trends](./images/img3.png)
+
 This page analyzes product pricing, order value, cancellation behavior, 
 and fulfillment speed across product categories.
 
@@ -135,6 +141,7 @@ and fulfillment speed across product categories.
 olist_orders_dataset, olist_order_payments (Gold layer aggregations)
 
 ## Refresh Pipeline Documentation
+![Pipeline](./images/pipeline1.png) ![Power BI Refresh](./images/pipeline2.png)
 
 ### Purpose and Scope
 Orchestrates moving data from source CSV files through Bronze, Silver, and Gold layers automatically when new data arrives. The watcher detects file changes, uploads to OneLake, triggers the Fabric notebook, and polls until completion.
