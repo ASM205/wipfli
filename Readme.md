@@ -159,6 +159,18 @@ Orchestrates moving data from source CSV files through Bronze, Silver, and Gold 
 | Fabric Notebook | `Notebook_1.ipynb` | Bronze reload → Silver cleaning → type casting → Power BI refresh |
 
 ---
+### Data Source
+
+| Condition | Action |
+|-----------|--------|
+| Files do not exist in OneLake `Files/` | Downloads full dataset from Kaggle (`olistbr/brazilian-ecommerce`) via kaggle Python library |
+| Files already exist | Skips Kaggle download, reloads Delta tables directly from existing CSVs |
+
+
+> On first run, the notebook checks `mssparkutils.fs.ls("Files/")` for `olist_orders_dataset.csv`.
+> If absent, all 9 CSVs are downloaded and unzipped to `/lakehouse/default/Files/`.
+> On subsequent runs (triggered by OneLake file events), the download is skipped entirely
+> and the pipeline proceeds directly to reloading Delta tables from the updated CSVs.
 
 ### Execution Flow
 
